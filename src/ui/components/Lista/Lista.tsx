@@ -24,12 +24,11 @@ export default function Lista({ pets }: ListaProps) {
         <ItemLista key={pet.id}>
           <Foto src={pet.foto} />
           <Informacoes>
-            <div>
-              <Nome>{pet.name}</Nome>
-              <Descricao>
-                {TextService.limitarText(pet.historia, tamanhoMaximoTexto)}
-              </Descricao>
-            </div>
+            <Nome>{pet.name}</Nome>
+            <Descricao>
+              {TextService.limitarText(pet.historia, tamanhoMaximoTexto)}
+            </Descricao>
+
             <Button variant={"contained"} fullWidth>
               Adotar
             </Button>
