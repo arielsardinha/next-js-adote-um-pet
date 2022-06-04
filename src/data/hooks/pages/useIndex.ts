@@ -30,6 +30,8 @@ export function useIndex() {
             limparFormulario();
           })
           .catch((erro: AxiosError<any>) => {
+            erro.response?.status === 500 && setMensagem(erro.response?.statusText);
+
             erro.response?.data.mensagem &&
               setMensagem(erro.response.data.mensagem);
           });
