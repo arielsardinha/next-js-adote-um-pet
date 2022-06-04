@@ -13,23 +13,30 @@ import {
 
 interface ListaProps {
   pets: Pet[];
+  onSelect: (pet: Pet) => void;
 }
 
-export default function Lista({ pets }: ListaProps) {
+export default function Lista({ pets, onSelect }: ListaProps) {
   const tamanhoMaximoTexto = 200;
 
   return (
     <ListaStyled>
       {pets.map((pet) => (
         <ItemLista key={pet.id}>
-          <Foto src={pet.foto} />
+          <Foto src={pet.foto} alt={pet.name} />
           <Informacoes>
-            <Nome>{pet.name}</Nome>
-            <Descricao>
-              {TextService.limitarText(pet.historia, tamanhoMaximoTexto)}
-            </Descricao>
+            <div>
+              <Nome>{pet.name}</Nome>
+              <Descricao>
+                {TextService.limitarText(pet.historia, tamanhoMaximoTexto)}
+              </Descricao>
+            </div>
 
-            <Button variant={"contained"} fullWidth>
+            <Button
+              onClick={() => onSelect(pet)}
+              variant={"contained"}
+              fullWidth
+            >
               Adotar
             </Button>
           </Informacoes>
