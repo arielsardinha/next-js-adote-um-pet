@@ -1,6 +1,6 @@
 export interface Pet {
   id: number;
-  name: string;
+  nome: string;
   historia: string;
   foto: string;
 }
